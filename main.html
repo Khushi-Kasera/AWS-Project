@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<style>
+    body{
+        background-image: url('https://img.freepik.com/free-vector/flower-shadow-background-vector-colorful-gradient_53876-125446.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;  
+        background-size: cover;
+    }
+    
+</style>
+<head>
+    <h1 align="center" style="color: rgb(37, 61, 7);">DIFFERENT SPECIES</h1>
+</head>
+<form action="{{ url_for('main') }}" method="POST">
+    <fieldset>
+        
+        <legend align="center" style="color:rgb(120, 7, 7);"><h2>ENTER THE VALUES </h2></legend>
+        <div style="text-align: center;">
+            Sepal Length(Cm): <span style="font-size: 120%; color: rgb(18, 17, 17);">*</span>
+            <input name="SepalLengthCm" type="range" min="0" max="10" step="0.01" oninput="document.getElementById('SepalLengthCm').innerText = this.value" required>
+            <span id="SepalLengthCm">0</span>
+            <br><br>
+
+            
+            Sepal Width(Cm): <span style="font-size: 120%; color: rgb(15, 14, 14);">*</span>
+            <input name="SepalWidthCm" type="range" min="0" max="10" step=0.01 oninput="document.getElementById('SepalWidthCm').innerText = this.value" required>
+            <span id="SepalWidthCm">0</span>
+            <br><br>
+            
+            Petal Length(Cm): <span style="font-size: 120%; color: rgb(6, 5, 5);">*</span>
+            <input name="PetalLengthCm" type="range" min="0" max="10" step=0.01 oninput="document.getElementById('PetalLengthCm').innerText = this.value" required>
+            <span id="PetalLengthCm">0</span>
+            <br><br>
+            
+            Petal Width(Cm): <span style="font-size: 120%; color: rgb(10, 10, 10);">*</span>
+            <input name="PetalWidthCm" type="range" min="0" max="10" step=0.01 oninput="document.getElementById('PetalWidthCm').innerText = this.value" required>
+            <span id="PetalWidthCm">0</span>
+            <br><br>
+
+            <input type="submit" style="height: 35px;width: 50px;">
+        </div>
+        
+     </fieldset>
+</form>
+<div class="result" align="center">
+    {% if result %}
+        {% for k, v in original_input.items() %}
+            <b>{{ k }}</b>: {{ v }}<br>
+        {% endfor %}
+        <h1 style="font-size: 25px; color: rgb(4, 6, 78);">PREDICTED</h1>
+        <p style="font-size: 20px; color: rgba(0, 0, 0, 0.881);">
+            {% if result == 'virginica' %}
+                <img src="https://i0.wp.com/mgnv.org/wp-content/uploads/2018/06/iris_versicolor_flowers_with-ruby-throated_hummingbird_june_mmf.jpg?fit=1200%2C741&ssl=1" alt="virginica" width="500" height="400">
+                <p style="font-size: 20px; color: rgb(120, 7, 7);">Virginica</p>
+            {% elif result == 'setosa' %}
+                <img src="https://www.plant-world-seeds.com/images/item_images/000/007/023/large_square/iris_baby_blue.jpg?1500653527" alt="Iris-setosa" width="500" height="400">
+                <p style="font-size: 20px; color: rgb(120, 7, 7);black;">Iris-setosa</p>
+            {% elif result == 'versicolor' %}
+                <img src="https://m.media-amazon.com/images/I/71TA+fvcGRL._AC_UF1000,1000_QL80_.jpg" alt="Iris-versicolor" width="500" height="400">
+                <p style="font-size: 20px; color: rgb(120, 7, 7);'black;">Iris-versicolor</p>
+
+            {% endif %}
+        </p>
+    {% endif %}
+</div>
+</html>
