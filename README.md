@@ -26,4 +26,3 @@
 2. Enter the sepal and petal measurements for an Iris flower sample.
 3. Click the "Submit" button to receive the predicted Iris species.
 
-Link - "file:///Users/khushi/Documents/All_Projects/IRIS_Cloud_Project/Templates/main.html"
